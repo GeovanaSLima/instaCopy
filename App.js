@@ -21,7 +21,7 @@ export default function App() {
       id: '2', 
       name: 'geehSl', 
       imgProfile: 'https://i.pinimg.com/236x/f3/85/d7/f385d78eba93e8b768bcc04bf96fe5a5.jpg',
-      imgPubli: require('./src/img/publis/publi_5.jpg'), 
+      imgPubli: require('./src/img/publis/publi_6.jpg'), 
       description: "I should've bought you flowers and held your hand...",
       liked: true,
       likes: 24,
