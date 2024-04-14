@@ -12,12 +12,23 @@ export default function Header() {
                 />
             </TouchableOpacity>
 
-            <TouchableOpacity>
-                <Image
-                source={require('../../img/base/send.png')}
-                style={styles.send}
-                />
-            </TouchableOpacity>
+            <View style={styles.socialBtnView} >
+                <TouchableOpacity>
+                    <Image
+                    source={require('../../img/base/like.png')}
+                    style={styles.like}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <Image
+                    source={require('../../img/base/send.png')}
+                    style={styles.send}
+                    />
+                </TouchableOpacity>
+
+            </View>
+
 
         </View>
     );
@@ -35,8 +46,16 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         elevation: 2
     },
+    like: {
+        width: 23,
+        height: 23,
+        marginRight: 12
+    },
     send: {
         width: 23,
         height: 23
-    }
+    },
+    socialBtnView: {
+        flexDirection: 'row'
+    },
 })
