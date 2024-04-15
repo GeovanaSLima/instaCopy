@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, FlatList, Image} from "react-native";
 
-import Header from "../components/Header";
-import List from "../components/List";
-import TabBar from "../components/TabBar";
+import FeedHeader from "../components/FeedHeader";
+import FeedPosts from "../components/FeedPosts";
 import { feed } from "../data/feedData";
 
-export default function Home() {
+export default function HomeScreen() {
 
   return(
     <View style={StyleSheet.container}>
 
-      <Header/>
+      <FeedHeader/>
 
       <FlatList 
       data={feed}
       keyExtractor={ (item) => item.id }
-      renderItem={ ({ item }) => <List data={item} /> }
+      renderItem={ ({ item }) => <FeedPosts data={item} /> }
       showsVerticalScrollIndicator={false}
       />
-
-      <TabBar />
       
     </View>
   );
