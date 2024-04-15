@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList, Image} from "react-native";
+import { View, Text, StyleSheet, FlatList, Image, StatusBar} from "react-native";
 
-import Header from "./src/components/Header";
-import List from "./src/components/List";
-import TabBar from "./src/components/TabBar";
-import { feed } from "./src/data/feedData";
-import Home from "./src/screens/Home";
+import RootNavigator from "./src/navigation/RootNavigator";
 
 export default function App() {
 
   return(
-    <View>
-      <Home />
-    </View>
+    <><StatusBar hidden /><RootNavigator /></>
   );
 }
 
