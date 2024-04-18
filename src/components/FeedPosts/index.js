@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions} from "react-native";
 
-export default function List(props) {
+export default function FeedPosts(props) {
 
     const screenWidth = Dimensions.get('window').width;
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image} from "react-native";
 
-export default function Header() {
+export default function FeedHeader() {
     return(
         <View style={styles.header}>
             
