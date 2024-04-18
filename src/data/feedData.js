@@ -25,7 +25,7 @@ export const feed = [
     {
       id: '3', 
       name: 'geh.s', 
-      imgProfile: 'https://raw.githubusercontent.com/GeovanaSLima/GeovanaSLima/main/GitProfile.png',
+      imgProfile: 'https://cdn.drawception.com/images/avatars/647493-B9E.png',
       imgPubli: require('../img/publis/publi_2.jpg'), 
       description: 'O meu lugar...',
       liked: false,

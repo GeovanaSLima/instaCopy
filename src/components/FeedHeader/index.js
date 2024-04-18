@@ -22,7 +22,7 @@ export default function FeedHeader() {
 
                 <TouchableOpacity>
                     <Image
-                    source={require('../../img/base/send.png')}
+                    source={require('../../img/base/messages.png')}
                     style={styles.send}
                     />
                 </TouchableOpacity>
@@ -42,9 +42,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 15,
-        borderBottomWidth: 0.2,
-        shadowColor: '#000',
-        elevation: 2
     },
     like: {
         width: 23,

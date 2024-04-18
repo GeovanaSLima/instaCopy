@@ -32,7 +32,7 @@ export default function FeedPosts(props) {
 
 
     return(
-        <View>
+        <View style={{backgroundColor: '#FFF'}}>
 
             <View style={styles.viewProfile}>
                 <Image
