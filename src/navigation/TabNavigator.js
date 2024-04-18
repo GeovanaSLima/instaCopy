@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator() {
     function selectIcon(route, focused, size) {
         let iconName;
-
+    
         if (route === 'Home') {
             iconName = focused
             ? require('../img/base/home_filled.png')
@@ -26,10 +26,25 @@ export default function TabNavigator() {
             iconName = focused
             ? require('../img/base/reel_filled.png')
             : require('../img/base/reel.png');
-        } 
-
+        } else if (route === 'Profile') {
+            // For 'Profile' route, return Image component with black border
+            return (
+                <Image 
+                    source={{uri: 'https://i.pinimg.com/236x/f3/85/d7/f385d78eba93e8b768bcc04bf96fe5a5.jpg'}}
+                    style={{
+                        width: size * 1.2,
+                        height: size * 1.2,
+                        borderRadius: (size * 1.2) / 2,
+                        borderWidth: focused ? 2 : 0, // Add border if focused
+                        borderColor: focused ? 'black' : 'transparent', // Set border color
+                    }}
+                />
+            );
+        }
+    
         return <Image source={iconName} style={{ width: size, height: size }} />;
     }
+    
 
     return(
         <Tab.Navigator style={styles.tabNavigatorContainer}>
@@ -85,12 +100,7 @@ export default function TabNavigator() {
                 options={{ 
                     tabBarShowLabel: false, 
                     headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image 
-                        source={{uri: 'https://i.pinimg.com/236x/f3/85/d7/f385d78eba93e8b768bcc04bf96fe5a5.jpg'}}
-                        style={{ width: size, height: size, borderRadius: size/2 }}
-                        />
-                    )
+                    tabBarIcon: ({ focused, color, size }) => selectIcon('Profile', focused, size)
                 }} 
             />
     </Tab.Navigator>
