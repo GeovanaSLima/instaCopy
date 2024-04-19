@@ -1,11 +1,17 @@
-import React from "react";
-import { StyleSheet, Image, View, Text } from "react-native";
-import { SearchBar } from '@rneui/themed';
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { SearchBar } from 'react-native-elements';
 
 export default function SearchScreen() {
-    return(
+
+    return (
         <View>
-            <Text>Search</Text>
-        </View>
-    );
+        <SearchBar
+        placeholder="Search"
+        onChangeText={(text) => console.log(text)}
+        round // Make the corners round
+        searchIcon={{ name: 'search', color: '#f50', onPress: () => console.log('hello') }}
+    />
+    </View>
+);
 }
