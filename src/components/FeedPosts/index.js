@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flex: 1,
         alignItems: 'center',
-        padding: 12
+        paddingHorizontal: 12,
+        paddingVertical: 8
     },
     profileImg: {
         width: 35,
