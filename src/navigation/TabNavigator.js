@@ -1,14 +1,16 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Image } from "react-native";
 
 import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
-import PostScreen from "../screens/PostScreen";
 import ReelsScreen from "../screens/ReelsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import RecentSearchScreen from "../components/RecentSearch";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function TabNavigator() {
     function selectIcon(route, focused, size) {
@@ -44,34 +46,17 @@ export default function TabNavigator() {
     
         return <Image source={iconName} style={{ width: size, height: size }} />;
     }
-    
 
-    return(
-        <Tab.Navigator style={styles.tabNavigatorContainer}>
-
-            <Tab.Screen 
-                name="Home" 
-                component={HomeScreen} 
+    const HomeStack = () => (
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} 
                 options={{ 
                     tabBarShowLabel: false, 
                     headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => selectIcon('Home', focused, size)
-                }} 
-            />
+                    tabBarIcon: ({ focused, color, size }) => selectIcon('Search', focused, size) 
+                }}  />
 
-            <Tab.Screen
-                name="Search"
-                component={SearchScreen}
-                options={{ 
-                    tabBarShowLabel: false, 
-                    headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => selectIcon('Search', focused, size)
-                }} 
-            />
-
-            <Tab.Screen
-                name="Post"
-                component={PostScreen}
+            <Stack.Screen  name="Post" component={PostScreen}
                 options={{ 
                     tabBarShowLabel: false, 
                     headerShown: false, 
@@ -81,31 +66,58 @@ export default function TabNavigator() {
                         style={{ width: size, height: size }}
                         />
                     )
-                }} 
-            />
+                }} />
+        </Stack.Navigator>
+    );
 
-            <Tab.Screen
-                name="Reels"
-                component={ReelsScreen}
+    const SearchStack = () => (
+        <Stack.Navigator>
+            <Stack.Screen name="Search" component={SearchScreen}
+                options={{ 
+                    tabBarShowLabel: false, 
+                    headerShown: false, 
+                    tabBarIcon: ({ focused, color, size }) => selectIcon('Search', focused, size)
+                }} />
+            
+            <Stack.Screen name="RecentSearch" component={RecentSearchScreen} 
+                options={{
+                    tabBarShowLabel: false,
+                    headerShown: false
+                }} />
+        </Stack.Navigator>
+    );
+
+    const ReelsStack = () => (
+        <Stack.Navigator>
+            <Stack.Screen name="Reels" component={ReelsScreen}
                 options={{ 
                     tabBarShowLabel: false, 
                     headerShown: false, 
                     tabBarIcon: ({ focused, color, size }) => selectIcon('Reels', focused, size)
-                }} 
-            />
+                }} />
+        </Stack.Navigator>
+    );
 
-            <Tab.Screen
-                name="Profile"
-                component={ProfileScreen}
+    const ProfileStack = () => (
+        <Stack.Navigator>
+            <Stack.Screen name="Profile" component={ProfileScreen}
                 options={{ 
                     tabBarShowLabel: false, 
                     headerShown: false, 
                     tabBarIcon: ({ focused, color, size }) => selectIcon('Profile', focused, size)
-                }} 
-            />
-    </Tab.Navigator>
-
+                }} />
+        </Stack.Navigator>
     );
+    
+
+    const MainTabNavigator = () => (
+        <Tab.Navigator>
+            <Tab.Screen name="Home" component={HomeStack} />
+            <Tab.Screen name="Search" component={SearchStack} />
+            <Tab.Screen name="Reels" component={ReelsStack} />
+            <Tab.Screen name="Profile" component={ProfileStack} />
+        </Tab.Navigator>
+    )
 }
 
 const styles = StyleSheet.create({
