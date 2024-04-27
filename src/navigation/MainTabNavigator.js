@@ -8,11 +8,12 @@ import SearchScreen from "../screens/SearchScreen";
 import ReelsScreen from "../screens/ReelsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import RecentSearchScreen from "../components/RecentSearch";
+import PostScreen from "../screens/PostScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-export default function TabNavigator() {
+export default function MainTabNavigator() {
     function selectIcon(route, focused, size) {
         let iconName;
     
@@ -29,7 +30,6 @@ export default function TabNavigator() {
             ? require('../img/base/reel_filled.png')
             : require('../img/base/reel.png');
         } else if (route === 'Profile') {
-            // For 'Profile' route, return Image component with black border
             return (
                 <Image 
                     source={{uri: 'https://i.pinimg.com/236x/f3/85/d7/f385d78eba93e8b768bcc04bf96fe5a5.jpg'}}
@@ -46,26 +46,18 @@ export default function TabNavigator() {
     
         return <Image source={iconName} style={{ width: size, height: size }} />;
     }
+    
 
     const HomeStack = () => (
         <Stack.Navigator>
             <Stack.Screen name="Home" component={HomeScreen} 
                 options={{ 
-                    tabBarShowLabel: false, 
-                    headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => selectIcon('Search', focused, size) 
+                    headerShown: false
                 }}  />
 
             <Stack.Screen  name="Post" component={PostScreen}
                 options={{ 
-                    tabBarShowLabel: false, 
-                    headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image 
-                        source={require('../img/base/post.png')}
-                        style={{ width: size, height: size }}
-                        />
-                    )
+                    headerShown: false
                 }} />
         </Stack.Navigator>
     );
@@ -74,14 +66,11 @@ export default function TabNavigator() {
         <Stack.Navigator>
             <Stack.Screen name="Search" component={SearchScreen}
                 options={{ 
-                    tabBarShowLabel: false, 
-                    headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => selectIcon('Search', focused, size)
+                    headerShown: false
                 }} />
             
             <Stack.Screen name="RecentSearch" component={RecentSearchScreen} 
                 options={{
-                    tabBarShowLabel: false,
                     headerShown: false
                 }} />
         </Stack.Navigator>
@@ -91,9 +80,7 @@ export default function TabNavigator() {
         <Stack.Navigator>
             <Stack.Screen name="Reels" component={ReelsScreen}
                 options={{ 
-                    tabBarShowLabel: false, 
-                    headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => selectIcon('Reels', focused, size)
+                    headerShown: false
                 }} />
         </Stack.Navigator>
     );
@@ -102,22 +89,46 @@ export default function TabNavigator() {
         <Stack.Navigator>
             <Stack.Screen name="Profile" component={ProfileScreen}
                 options={{ 
-                    tabBarShowLabel: false, 
-                    headerShown: false, 
-                    tabBarIcon: ({ focused, color, size }) => selectIcon('Profile', focused, size)
+                    headerShown: false
                 }} />
         </Stack.Navigator>
     );
     
+    const DummyScreen = () => {
+        return null; // Or you can return any other component you want
+      };
 
-    const MainTabNavigator = () => (
-        <Tab.Navigator>
+    return(
+        <Tab.Navigator
+            screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => selectIcon(route.name, focused, size),
+                tabBarShowLabel: false,
+                headerShown: false
+            })}
+        >
             <Tab.Screen name="Home" component={HomeStack} />
             <Tab.Screen name="Search" component={SearchStack} />
+            <Tab.Screen
+                name="NewPost"
+                component={DummyScreen}
+                options={({ navigation }) => ({
+                tabBarIcon: ({ focused, color, size }) => (
+                    <Image
+                    source={require('../img/base/post.png')}
+                    style={{ width: size, height: size }}
+                    />
+                ),
+                tabBarOnPress: () => {
+                    // Do nothing when the tab is pressed
+                    // You can add any custom logic here if needed
+                },
+                })}
+            />
+            {/* <Tab.Screen name="NewPost" component={HomeScreen} tabBarIcon={require('../img/base/post.png')} /> */}
             <Tab.Screen name="Reels" component={ReelsStack} />
             <Tab.Screen name="Profile" component={ProfileStack} />
         </Tab.Navigator>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

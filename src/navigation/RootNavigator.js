@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
-import TabNavigator from "./TabNavigator";
+import MainTabNavigator from "./MainTabNavigator";
+
 
 export default function RootNavigator() {
     return(
         <NavigationContainer>
-            <TabNavigator />
+            <MainTabNavigator />
         </NavigationContainer>
     );
 }
