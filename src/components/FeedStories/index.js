@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
     },
     defaultBorder: {
         borderColor: '#E1306C',
-        borderWidth: 3
+        borderWidth: 2
     },
     closeFriendsBorder: {
         borderColor: '#6DC993',
-        borderWidth: 3
+        borderWidth: 2
     },
     circle: {
         height: 65,
