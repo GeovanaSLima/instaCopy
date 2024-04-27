@@ -14,6 +14,7 @@ export default function HomeScreen() {
       <FeedHeader />
 
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        
         <FlatList
           data={stories}
           keyExtractor={(item) => item.id}
