@@ -1,12 +1,21 @@
+import { useNavigation, useIsFocused } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
 
 export default function PostHeader() {
+    const navigation = useNavigation();
+    const isFocused = useIsFocused();
+
+    const goToSearchScreen = () => {
+        if (!isFocused) {
+            navigation.navigate('Search');
+        }
+    };
 
     return(
         <View style={styles.header}>
             
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goToSearchScreen} >
                 <Image
                 source={require('../../img/base/arrow-left.png')}
                 style={styles.logo}
@@ -14,11 +23,8 @@ export default function PostHeader() {
             </TouchableOpacity>
 
             <View>
-                <Text style={styles.header}>
-                    Explore
-                </Text>
+                <Text style={styles.headerTitle}>Explore</Text>
             </View>
-
 
         </View>
     );
@@ -30,8 +36,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
         paddingHorizontal: 15,
+    },
+    logo: {
+        width: 35,
+        height: 35
+    },
+    headerTitle: {
+        fontSize: 18,
+        color: '#000',
+        fontWeight: '700',
+        marginLeft: 30
     },
     like: {
         width: 23,
