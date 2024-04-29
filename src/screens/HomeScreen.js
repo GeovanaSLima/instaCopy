@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF'
   },
   scrollViewContent: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flex: 0,
   }
 })
