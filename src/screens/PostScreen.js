@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image, View, Text } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import FeedPosts from "../components/FeedPosts";
 import PostHeader from "../components/PostHeader";
 
@@ -8,10 +8,10 @@ export default function PostScreen({ route }) {
 
     return(
         <View style={styles.container} >
-            
             <PostHeader />
-
-            <FeedPosts data={data} />
+            <ScrollView style={styles.scrollViewContent}>
+                <FeedPosts data={data} />
+            </ScrollView>
         </View>
     );
 } 
@@ -21,4 +21,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF'
     },
+    scrollViewContent: {
+        flex: 1
+    }
 })
