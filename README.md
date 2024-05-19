@@ -5,7 +5,6 @@ React Native project copying the Instagram Feed UI. The posts information were s
 The idea of this app is to apply some new knowledge obtained in my current learning journey.
 
 
-
 # 💻 How to Use It
 
 ## ⚠️ Requirements
